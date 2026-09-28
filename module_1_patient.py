@@ -38,3 +38,10 @@ class Patient:
                     ptau=ptau,
                     mmse=mmse
                 )
+    @classmethod
+    def filter(cls, patient_list, cognitive_status: str = "any"):
+        remaining_patients = patient_list
+        if cognitive_status != "any":
+            remaining_patients = [patient for patient in remaining_patients
+                                  if patient.cognitive_status == cognitive_status]
+        return remaining_patients
